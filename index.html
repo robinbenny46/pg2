@@ -203,7 +203,7 @@
     <!-- Collapsible 2 -->
     <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp2content" id="exp2" aria-labelledby="exp2header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
       <div class="header" id="exp2header">
-        <span class="title" style="font-family: 'EB Garamond', serir; font-weight: 800;">Operations Manager</span>
+        <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Operations Manager</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">December 2020 - August 2021</span>
       </div>
       <div class="content" id="exp2content">
@@ -224,7 +224,7 @@
     <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp3content" id="exp3" aria-labelledby="exp3header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
       <div class="header" id="exp3header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Senior Engineer / Business Development - International Business</span>
-        <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">November 2013 - December 2020</span>
+        <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 6  00; font-style: italic;">November 2013 - December 2020</span>
       </div>
       <div class="content" id="exp3content">
         <div class="line2">
@@ -242,7 +242,7 @@
 
     <!-- Collapsible 4 -->
     <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp4content" id="exp4" aria-labelledby="exp4header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
-      <div class="header" id="exp4header">
+      <div class="header" id="sp4header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Technical Trainer & Course Developer</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">October 2012 - October 2013</span>
       </div>
@@ -349,15 +349,6 @@
         const index = collapsibles.indexOf(element);
         expandCollapsible(index);
       }
-      // When experience is expanded, collapse Professional Summary
-      if (content1.classList.contains('active')) {
-        content1.classList.remove('active');
-      }
-      // Ensure experience content is visible
-      if (!content2.classList.contains('active')) {
-        content2.classList.add('active');
-      }
-      updateAria();
     }
 
     /* Keyboard handler for collapsibles: toggle on Enter or Space */
@@ -409,15 +400,15 @@
       if (!touchStartX || !touchStartY) {
         return;
       }
-      let touchEndX = evt.touches[0].clientX;
-      let touchEndY = evt.touches[0].clientY;
+      const touchEndX = evt.touches[0].clientX;
+      const touchEndY = evt.touches[0].clientY;
 
-      let diffY = touchStartY - touchEndY; // Only vertical swipe matters
+      const diffY = touchStartY - touchEndY; // Only vertical swipe matters
 
       // Only consider vertical swipe
       if (Math.abs(diffY) > swipeThreshold) {
         if (diffY > swipeThreshold) {
-          // Swipe up: move to next or show Experience
+          // Swipe up: move to next collapsible or show Experience
           if (content2.classList.contains('active')) {
             // If Experience active, swipe to next collapsible
             swipeExperienceCollapsible('next');
@@ -427,7 +418,7 @@
           }
           resetTouch();
         } else if (diffY < -swipeThreshold) {
-          // Swipe down: move to previous or show Professional Summary
+          // Swipe down: move to previous collapsible or show Professional Summary
           if (content2.classList.contains('active')) {
             // If Experience active, swipe to previous collapsible
             swipeExperienceCollapsible('prev');
@@ -486,8 +477,19 @@
             showExperience();
           }
           break;
-        case 'ArrowLeft':
-          // Optionally: Left/Right can also control if you want, but currently not used
-          break;
-        case 'ArrowRight':
-          break;
+      }
+    }
+
+    /* Attach event listeners for swipe and keyboard */
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
+    document.addEventListener('keydown', handleKeyDown);
+
+    /* Initialize aria attributes */
+    updateAria();
+
+    /* On page load, only Professional Summary is active */
+    /* No need to collapse or expand anything else at start */
+  </script>
+</body>
+</html>
