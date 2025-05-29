@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Professional Summary & Experience</title>
+  <title>Professional Summary & Experience with Swipe & Keyboard</title>
   <!-- EB Garamond from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -20,6 +20,7 @@
       padding: 10px 0;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      touch-action: pan-y; /* allow vertical scroll but detect horizontal swipe */
     }
     /* Sticky Headers */
     .header-box, .experience-header {
@@ -50,6 +51,7 @@
       border-top: none;
       display: none;
       animation: fadeIn 0.4s ease forwards;
+      min-height: 150px;
     }
     .content.active {
       display: block;
@@ -153,23 +155,23 @@
 </head>
 <body>
   <!-- Header 1 - Professional Summary -->
-  <div class="header-box" id="header1">Professional Summary</div>
-  <div class="content active" id="content1">
+  <div class="header-box" id="header1" tabindex="0" aria-expanded="true" role="button" aria-controls="content1">Professional Summary</div>
+  <div class="content active" id="content1" role="region" aria-labelledby="header1">
     <p>
       Experienced digital marketer and web developer with a strong background in designing and developing responsive web pages. Adept at understanding client requirements and delivering tailored solutions that meet exact specifications.
     </p>
   </div>
 
   <!-- Header 2 - Experience -->
-  <div class="experience-header" id="header2">Experience</div>
-  <div class="content" id="content2">
+  <div class="experience-header" id="header2" tabindex="0" aria-expanded="false" role="button" aria-controls="content2">Experience</div>
+  <div class="content" id="content2" role="region" aria-labelledby="header2">
     <!-- Collapsible 1 -->
-    <div class="collapsible" onclick="toggleExperience(this)">
-      <div class="header">
+    <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp1content" id="exp1" aria-labelledby="exp1header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
+      <div class="header" id="exp1header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Regional Business Manager</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">October 2023 - November 2024</span>
       </div>
-      <div class="content">
+      <div class="content" id="exp1content">
         <div class="line2">
           <span class="company" style="font-family: 'EB Garamond', serif; font-weight: 600;">Beth Lifestyle Pvt Ltd</span>
           <span class="location" style="font-family: 'EB Garamond', serif; font-weight: 500;">Kerala & Tamil Nadu</span>
@@ -184,12 +186,12 @@
     </div>
 
     <!-- Collapsible 2 -->
-    <div class="collapsible" onclick="toggleExperience(this)">
-      <div class="header">
+    <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp2content" id="exp2" aria-labelledby="exp2header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
+      <div class="header" id="exp2header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Operations Manager</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">December 2020 - August 2021</span>
       </div>
-      <div class="content">
+      <div class="content" id="exp2content">
         <div class="line2">
           <span class="company" style="font-family: 'EB Garamond', serif; font-weight: 600;">Sahara - Kerala</span>
           <span class="location" style="font-family: 'EB Garamond', serif; font-weight: 500;">Kerala</span>
@@ -204,12 +206,12 @@
     </div>
 
     <!-- Collapsible 3 -->
-    <div class="collapsible" onclick="toggleExperience(this)">
-      <div class="header">
+    <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp3content" id="exp3" aria-labelledby="exp3header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
+      <div class="header" id="exp3header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Senior Engineer / Business Development - International Business</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">November 2013 - December 2020</span>
       </div>
-      <div class="content">
+      <div class="content" id="exp3content">
         <div class="line2">
           <span class="company" style="font-family: 'EB Garamond', serif; font-weight: 600;">CADD Centre Training Services Pvt Ltd</span>
           <span class="location" style="font-family: 'EB Garamond', serif; font-weight: 500;">Global (Headquartered in Chennai)</span>
@@ -224,12 +226,12 @@
     </div>
 
     <!-- Collapsible 4 -->
-    <div class="collapsible" onclick="toggleExperience(this)">
-      <div class="header">
+    <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp4content" id="exp4" aria-labelledby="exp4header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
+      <div class="header" id="exp4header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Technical Trainer & Course Developer</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">October 2012 - October 2013</span>
       </div>
-      <div class="content">
+      <div class="content" id="exp4content">
         <div class="line2">
           <span class="company" style="font-family: 'EB Garamond', serif; font-weight: 600;">XCAD</span>
           <span class="location" style="font-family: 'EB Garamond', serif; font-weight: 500;">Odisha</span>
@@ -244,12 +246,12 @@
     </div>
 
     <!-- Collapsible 5 -->
-    <div class="collapsible" onclick="toggleExperience(this)">
-      <div class="header">
+    <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp5content" id="exp5" aria-labelledby="exp5header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
+      <div class="header" id="exp5header">
         <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Graduate Engineer Trainee</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">July 2011 - June 2012</span>
       </div>
-      <div class="content">
+      <div class="content" id="exp5content">
         <div class="line2">
           <span class="company" style="font-family: 'EB Garamond', serif; font-weight: 600;">Alicon Castalloys Pvt Ltd</span>
           <span class="location" style="font-family: 'EB Garamond', serif; font-weight: 500;">Pune</span>
@@ -265,32 +267,39 @@
   </div>
 
   <script>
+    // Elements
     const header1 = document.getElementById('header1');
     const content1 = document.getElementById('content1');
     const header2 = document.getElementById('header2');
     const content2 = document.getElementById('content2');
 
     // Toggle Header 1 content and collapse Header 2 content + collapsibles
-    header1.addEventListener('click', () => {
+    function showProfessionalSummary() {
       if (!content1.classList.contains('active')) {
         content1.classList.add('active');
         content2.classList.remove('active');
         collapseAllExperience();
+        updateAria();
       }
-    });
+    }
 
     // Toggle Header 2 content and collapse Header 1 content
-    header2.addEventListener('click', () => {
+    function showExperience() {
       if (!content2.classList.contains('active')) {
         content2.classList.add('active');
         content1.classList.remove('active');
+        updateAria();
       }
-    });
+    }
+
+    header1.addEventListener('click', showProfessionalSummary);
+    header2.addEventListener('click', showExperience);
 
     // Collapse all experience collapsibles
     function collapseAllExperience() {
       document.querySelectorAll('#content2 .collapsible').forEach(collapsible => {
         collapsible.classList.remove('active');
+        collapsible.setAttribute('aria-expanded', 'false');
       });
     }
 
@@ -300,6 +309,9 @@
       collapseAllExperience();
       if (!isActive) {
         element.classList.add('active');
+        element.setAttribute('aria-expanded', 'true');
+      } else {
+        element.setAttribute('aria-expanded', 'false');
       }
       // When experience is expanded, collapse Header 1 content
       if (content1.classList.contains('active')) {
@@ -309,7 +321,96 @@
       if (!content2.classList.contains('active')) {
         content2.classList.add('active');
       }
+      updateAria();
     }
+
+    // Keyboard support for collapsibles (Enter or Space to toggle)
+    function collapsibleKeyHandler(event, element) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleExperience(element);
+      }
+    }
+
+    // Update aria-expanded on headers
+    function updateAria() {
+      header1.setAttribute('aria-expanded', content1.classList.contains('active'));
+      header2.setAttribute('aria-expanded', content2.classList.contains('active'));
+    }
+
+    // Swipe detection variables
+    let touchStartX = null;
+    let touchStartY = null;
+    const swipeThreshold = 50; // Minimum px to count as swipe
+
+    function handleTouchStart(evt) {
+      const firstTouch = evt.touches[0];
+      touchStartX = firstTouch.clientX;
+      touchStartY = firstTouch.clientY;
+    }
+
+    function handleTouchMove(evt) {
+      if (!touchStartX || !touchStartY) {
+        return;
+      }
+      let touchEndX = evt.touches[0].clientX;
+      let touchEndY = evt.touches[0].clientY;
+
+      let diffX = touchStartX - touchEndX;
+      let diffY = touchStartY - touchEndY;
+
+      // Determine if horizontal or vertical swipe
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal swipe
+        if (diffX > swipeThreshold) {
+          // Swipe left
+          showExperience();
+          resetTouch();
+        } else if (diffX < -swipeThreshold) {
+          // Swipe right
+          showProfessionalSummary();
+          resetTouch();
+        }
+      } else {
+        // Vertical swipe
+        if (diffY > swipeThreshold) {
+          // Swipe up
+          showExperience();
+          resetTouch();
+        } else if (diffY < -swipeThreshold) {
+          // Swipe down
+          showProfessionalSummary();
+          resetTouch();
+        }
+      }
+    }
+
+    function resetTouch() {
+      touchStartX = null;
+      touchStartY = null;
+    }
+
+    // Keyboard navigation for sections
+    function handleKeyDown(evt) {
+      switch (evt.key) {
+        case 'ArrowUp':
+        case 'ArrowLeft':
+          showProfessionalSummary();
+          break;
+        case 'ArrowDown':
+        case 'ArrowRight':
+          showExperience();
+          break;
+      }
+    }
+
+    // Attach event listeners
+    document.addEventListener('touchstart', handleTouchStart, {passive: true});
+    document.addEventListener('touchmove', handleTouchMove, {passive: true});
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Initialize aria attributes
+    updateAria();
   </script>
 </body>
 </html>
