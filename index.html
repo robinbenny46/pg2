@@ -4,126 +4,140 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Professional Summary & Experience with Swipe & Keyboard</title>
-  <!-- EB Garamond from Google Fonts -->
+  <!-- EB Garamond font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset */
+    /* Reset margin and padding for all elements */
     * {
-      box-sizing: border-box;
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
       margin: 0;
       padding: 0;
     }
+    /* Body styles */
     body {
-      font-family: Cambria, serif;
-      background: #f9f9f9;
-      color: #333;
+      font-family: Cambria, serif; /* Default font */
+      background: #f9f9f9; /* Light grey background */
+      color: #333; /* Dark text color */
       padding: 10px 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      touch-action: pan-y; /* allow vertical scroll but detect horizontal swipe */
+      -webkit-font-smoothing: antialiased; /* Smooth fonts on WebKit */
+      -moz-osx-font-smoothing: grayscale;  /* Smooth fonts on Firefox */
+      touch-action: pan-y; /* Allow vertical scroll but detect horizontal swipe */
     }
-    /* Sticky Headers */
+    /* Sticky header styles for both headers */
     .header-box, .experience-header {
-      background: #808080;
-      color: #fff;
+      background: #808080; /* Grey background */
+      color: #fff; /* White text */
       padding: 15px 20px;
       width: 100%;
-      font-family: 'EB Garamond', serif;
-      font-weight: 800;
-      font-size: 1.8rem;
-      cursor: pointer;
-      user-select: none;
-      position: sticky;
+      font-family: 'EB Garamond', serif; /* Special font */
+      font-weight: 800; /* Extra bold */
+      font-size: 1.8rem; /* Large font size */
+      cursor: pointer; /* Pointer cursor on hover */
+      user-select: none; /* Disable text selection */
+      position: sticky; /* Stick to top when scrolling */
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
+      z-index: 100; /* Stay on top */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      transition: background-color 0.3s ease; /* Smooth hover transition */
     }
+    /* Header hover effect */
     .header-box:hover, .experience-header:hover {
-      background-color: #6e6e6e;
+      background-color: #6e6e6e; /* Darker grey on hover */
     }
-    /* Content sections */
+    /* Content container styles */
     .content {
       padding: 15px 20px 30px;
-      font-family: Cambria, serif;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-top: none;
-      display: none;
-      animation: fadeIn 0.4s ease forwards;
-      min-height: 150px;
+      font-family: Cambria, serif; /* Default font */
+      background: #fff; /* White background */
+      border: 1px solid #ddd; /* Light border */
+      border-top: none; /* No border on top to connect with header */
+      display: none; /* Hidden by default */
+      animation: fadeIn 0.4s ease forwards; /* Fade in animation */
+      min-height: 150px; /* Minimum height for better UX */
     }
+    /* Show active content */
     .content.active {
       display: block;
     }
+    /* Fade in animation keyframes */
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(10px); /* Slight slide up */
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    /* Collapsible Experience sections */
+    /* Collapsible box container */
     .collapsible {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      user-select: none;
+      border: 1px solid #ddd; /* Light border */
+      border-radius: 8px; /* Rounded corners */
+      margin-bottom: 15px; /* Space below each box */
+      overflow: hidden; /* Hide overflow */
+      background: #fff; /* White background */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+      user-select: none; /* Disable text selection */
     }
+    /* Header inside collapsible box */
     .collapsible .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; /* Flexbox for alignment */
+      justify-content: space-between; /* Space between left and right */
+      align-items: center; /* Vertically center */
       padding: 12px 15px;
-      background: #f0f0f0;
-      cursor: pointer;
-      font-family: 'EB Garamond', serif;
-      font-weight: 800;
-      font-size: 1.2rem;
+      background: #f0f0f0; /* Light grey background */
+      cursor: pointer; /* Pointer cursor */
+      font-family: 'EB Garamond', serif; /* Special font */
+      font-weight: 800; /* Extra bold */
+      font-size: 1.2rem; /* Slightly smaller font */
     }
+    /* Date text on right side */
     .collapsible .header .date {
-      font-weight: 600;
-      font-style: italic;
-      font-size: 1rem;
+      font-weight: 600; /* Semi-bold */
+      font-style: italic; /* Italic */
+      font-size: 1rem; /* Normal size */
       font-family: 'EB Garamond', serif;
     }
+    /* Collapsible content hidden by default */
     .collapsible .content {
       display: none;
       padding: 15px;
       font-family: Cambria, serif;
       background: #fff;
     }
+    /* Show content when active */
     .collapsible.active .content {
       display: block;
     }
+    /* Line 2 with company and location */
     .line2 {
       display: flex;
       justify-content: space-between;
       margin-top: 8px;
       font-family: 'EB Garamond', serif;
     }
+    /* Company name bold */
     .line2 .company {
       font-weight: 600;
     }
+    /* Location medium weight */
     .line2 .location {
       font-weight: 500;
     }
+    /* Line 3 about the company */
     .line3 {
       font-family: Cambria, serif;
       font-style: italic;
       margin-top: 8px;
     }
+    /* Bullet list styles */
     .bullet-list {
       margin-top: 12px;
       padding-left: 20px;
-      list-style-type: none;
+      list-style-type: none; /* Remove default bullets */
     }
+    /* Each bullet item */
     .bullet-list li {
       position: relative;
       margin-bottom: 8px;
@@ -133,16 +147,17 @@
     }
     /* Custom rotating square bullet */
     .bullet-list li::before {
-      content: "■";
+      content: "■"; /* Square bullet */
       position: absolute;
       left: 0;
       top: 0;
-      color: #808080;
-      animation: rotateBullet 2s linear infinite;
+      color: #808080; /* Grey color */
+      animation: rotateBullet 2s linear infinite; /* Continuous rotation */
       font-size: 14px;
       line-height: 1;
       transform-origin: 50% 50%;
     }
+    /* Rotation animation keyframes */
     @keyframes rotateBullet {
       0% {
         transform: rotate(0deg);
@@ -267,13 +282,19 @@
   </div>
 
   <script>
-    // Elements
+    /* Get references to main headers and content sections */
     const header1 = document.getElementById('header1');
     const content1 = document.getElementById('content1');
     const header2 = document.getElementById('header2');
     const content2 = document.getElementById('content2');
 
-    // Toggle Header 1 content and collapse Header 2 content + collapsibles
+    /* Get all collapsible boxes inside Experience */
+    const collapsibles = Array.from(document.querySelectorAll('#content2 .collapsible'));
+
+    /* Track currently expanded collapsible index */
+    let currentCollapsibleIndex = 0;
+
+    /* Show Professional Summary section and hide Experience */
     function showProfessionalSummary() {
       if (!content1.classList.contains('active')) {
         content1.classList.add('active');
@@ -283,37 +304,52 @@
       }
     }
 
-    // Toggle Header 2 content and collapse Header 1 content
+    /* Show Experience section and hide Professional Summary */
+    /* Also expand first collapsible box automatically */
     function showExperience() {
       if (!content2.classList.contains('active')) {
         content2.classList.add('active');
         content1.classList.remove('active');
+        expandCollapsible(0); // Expand first collapsible
         updateAria();
       }
     }
 
-    header1.addEventListener('click', showProfessionalSummary);
-    header2.addEventListener('click', showExperience);
-
-    // Collapse all experience collapsibles
+    /* Collapse all collapsible boxes */
     function collapseAllExperience() {
-      document.querySelectorAll('#content2 .collapsible').forEach(collapsible => {
+      collapsibles.forEach(collapsible => {
         collapsible.classList.remove('active');
         collapsible.setAttribute('aria-expanded', 'false');
       });
+      currentCollapsibleIndex = -1; // No collapsible expanded
     }
 
-    // Toggle individual experience collapsible
+    /* Expand collapsible box by index */
+    function expandCollapsible(index) {
+      if (index < 0 || index >= collapsibles.length) return;
+      collapseAllExperience(); // Collapse all first
+      const collapsible = collapsibles[index];
+      collapsible.classList.add('active');
+      collapsible.setAttribute('aria-expanded', 'true');
+      currentCollapsibleIndex = index;
+      // Scroll the expanded collapsible into view smoothly
+      collapsible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* Toggle collapsible box on click or keyboard */
     function toggleExperience(element) {
       const isActive = element.classList.contains('active');
-      collapseAllExperience();
-      if (!isActive) {
-        element.classList.add('active');
-        element.setAttribute('aria-expanded', 'true');
-      } else {
+      if (isActive) {
+        // If already active, collapse it
+        element.classList.remove('active');
         element.setAttribute('aria-expanded', 'false');
+        currentCollapsibleIndex = -1;
+      } else {
+        // Expand clicked collapsible and collapse others
+        const index = collapsibles.indexOf(element);
+        expandCollapsible(index);
       }
-      // When experience is expanded, collapse Header 1 content
+      // When experience is expanded, collapse Professional Summary
       if (content1.classList.contains('active')) {
         content1.classList.remove('active');
       }
@@ -324,7 +360,7 @@
       updateAria();
     }
 
-    // Keyboard support for collapsibles (Enter or Space to toggle)
+    /* Keyboard handler for collapsibles: toggle on Enter or Space */
     function collapsibleKeyHandler(event, element) {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -332,23 +368,43 @@
       }
     }
 
-    // Update aria-expanded on headers
+    /* Update aria-expanded attributes on main headers */
     function updateAria() {
       header1.setAttribute('aria-expanded', content1.classList.contains('active'));
       header2.setAttribute('aria-expanded', content2.classList.contains('active'));
     }
 
-    // Swipe detection variables
+    /* Event listeners for main headers click */
+    header1.addEventListener('click', showProfessionalSummary);
+    header2.addEventListener('click', showExperience);
+
+    /* Keyboard navigation for main headers */
+    header1.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showProfessionalSummary();
+      }
+    });
+    header2.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showExperience();
+      }
+    });
+
+    /* Swipe detection variables */
     let touchStartX = null;
     let touchStartY = null;
     const swipeThreshold = 50; // Minimum px to count as swipe
 
+    /* Handle touch start: record initial touch coordinates */
     function handleTouchStart(evt) {
       const firstTouch = evt.touches[0];
       touchStartX = firstTouch.clientX;
       touchStartY = firstTouch.clientY;
     }
 
+    /* Handle touch move: detect swipe direction and act accordingly */
     function handleTouchMove(evt) {
       if (!touchStartX || !touchStartY) {
         return;
@@ -359,20 +415,32 @@
       let diffX = touchStartX - touchEndX;
       let diffY = touchStartY - touchEndY;
 
-      // Determine if horizontal or vertical swipe
+      // Determine if horizontal or vertical swipe is dominant
       if (Math.abs(diffX) > Math.abs(diffY)) {
-        // Horizontal swipe
+        // Horizontal swipe detected
         if (diffX > swipeThreshold) {
           // Swipe left
-          showExperience();
+          if (content2.classList.contains('active')) {
+            // If Experience active, swipe collapsibles right
+            swipeExperienceCollapsible('next');
+          } else {
+            // Otherwise switch to Experience section
+            showExperience();
+          }
           resetTouch();
         } else if (diffX < -swipeThreshold) {
           // Swipe right
-          showProfessionalSummary();
+          if (content2.classList.contains('active')) {
+            // Swipe collapsibles left
+            swipeExperienceCollapsible('prev');
+          } else {
+            // Switch to Professional Summary
+            showProfessionalSummary();
+          }
           resetTouch();
         }
       } else {
-        // Vertical swipe
+        // Vertical swipe detected
         if (diffY > swipeThreshold) {
           // Swipe up
           showExperience();
@@ -385,32 +453,69 @@
       }
     }
 
+    /* Reset touch start coordinates */
     function resetTouch() {
       touchStartX = null;
       touchStartY = null;
     }
 
-    // Keyboard navigation for sections
+    /* Keyboard navigation for main sections */
     function handleKeyDown(evt) {
       switch (evt.key) {
         case 'ArrowUp':
         case 'ArrowLeft':
-          showProfessionalSummary();
+          if (content2.classList.contains('active')) {
+            // If Experience active, move collapsible left
+            swipeExperienceCollapsible('prev');
+          } else {
+            // Show Professional Summary
+            showProfessionalSummary();
+          }
           break;
         case 'ArrowDown':
         case 'ArrowRight':
-          showExperience();
+          if (content2.classList.contains('active')) {
+            // If Experience active, move collapsible right
+            swipeExperienceCollapsible('next');
+          } else {
+            // Show Experience
+            showExperience();
+          }
           break;
       }
     }
 
-    // Attach event listeners
-    document.addEventListener('touchstart', handleTouchStart, {passive: true});
-    document.addEventListener('touchmove', handleTouchMove, {passive: true});
+    /* Swipe Experience collapsibles left or right */
+    function swipeExperienceCollapsible(direction) {
+      if (collapsibles.length === 0) return;
+
+      if (currentCollapsibleIndex === -1) {
+        // If none expanded, expand first
+        expandCollapsible(0);
+        return;
+      }
+
+      if (direction === 'next') {
+        // Move to next collapsible, loop to first if at end
+        let nextIndex = (currentCollapsibleIndex + 1) % collapsibles.length;
+        expandCollapsible(nextIndex);
+      } else if (direction === 'prev') {
+        // Move to previous collapsible, loop to last if at start
+        let prevIndex = (currentCollapsibleIndex - 1 + collapsibles.length) % collapsibles.length;
+        expandCollapsible(prevIndex);
+      }
+    }
+
+    /* Attach event listeners for swipe and keyboard */
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
     document.addEventListener('keydown', handleKeyDown);
 
-    // Initialize aria attributes
+    /* Initialize aria attributes */
     updateAria();
+
+    /* On page load, ensure first collapsible is collapsed */
+    collapseAllExperience();
   </script>
 </body>
 </html>
