@@ -21,7 +21,7 @@
       padding: 10px 0;
       -webkit-font-smoothing: antialiased; /* Smooth fonts on WebKit */
       -moz-osx-font-smoothing: grayscale;  /* Smooth fonts on Firefox */
-      touch-action: pan-y; /* Allow vertical scroll but detect horizontal swipe */
+      touch-action: pan-y; /* Allow vertical scroll but detect swipe */
     }
     /* Sticky header styles for both headers */
     .header-box, .experience-header {
@@ -203,7 +203,7 @@
     <!-- Collapsible 2 -->
     <div class="collapsible" tabindex="0" role="button" aria-expanded="false" aria-controls="exp2content" id="exp2" aria-labelledby="exp2header" onclick="toggleExperience(this)" onkeydown="collapsibleKeyHandler(event, this)">
       <div class="header" id="exp2header">
-        <span class="title" style="font-family: 'EB Garamond', serif; font-weight: 800;">Operations Manager</span>
+        <span class="title" style="font-family: 'EB Garamond', serir; font-weight: 800;">Operations Manager</span>
         <span class="date" style="font-family: 'EB Garamond', serif; font-weight: 600; font-style: italic;">December 2020 - August 2021</span>
       </div>
       <div class="content" id="exp2content">
@@ -412,42 +412,29 @@
       let touchEndX = evt.touches[0].clientX;
       let touchEndY = evt.touches[0].clientY;
 
-      let diffX = touchStartX - touchEndX;
-      let diffY = touchStartY - touchEndY;
+      let diffY = touchStartY - touchEndY; // Only vertical swipe matters
 
-      // Determine if horizontal or vertical swipe is dominant
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        // Horizontal swipe detected
-        if (diffX > swipeThreshold) {
-          // Swipe left
+      // Only consider vertical swipe
+      if (Math.abs(diffY) > swipeThreshold) {
+        if (diffY > swipeThreshold) {
+          // Swipe up: move to next or show Experience
           if (content2.classList.contains('active')) {
-            // If Experience active, swipe collapsibles right
+            // If Experience active, swipe to next collapsible
             swipeExperienceCollapsible('next');
           } else {
             // Otherwise switch to Experience section
             showExperience();
           }
           resetTouch();
-        } else if (diffX < -swipeThreshold) {
-          // Swipe right
+        } else if (diffY < -swipeThreshold) {
+          // Swipe down: move to previous or show Professional Summary
           if (content2.classList.contains('active')) {
-            // Swipe collapsibles left
+            // If Experience active, swipe to previous collapsible
             swipeExperienceCollapsible('prev');
           } else {
             // Switch to Professional Summary
             showProfessionalSummary();
           }
-          resetTouch();
-        }
-      } else {
-        // Vertical swipe detected
-        if (diffY > swipeThreshold) {
-          // Swipe up
-          showExperience();
-          resetTouch();
-        } else if (diffY < -swipeThreshold) {
-          // Swipe down
-          showProfessionalSummary();
           resetTouch();
         }
       }
@@ -459,33 +446,7 @@
       touchStartY = null;
     }
 
-    /* Keyboard navigation for main sections */
-    function handleKeyDown(evt) {
-      switch (evt.key) {
-        case 'ArrowUp':
-        case 'ArrowLeft':
-          if (content2.classList.contains('active')) {
-            // If Experience active, move collapsible left
-            swipeExperienceCollapsible('prev');
-          } else {
-            // Show Professional Summary
-            showProfessionalSummary();
-          }
-          break;
-        case 'ArrowDown':
-        case 'ArrowRight':
-          if (content2.classList.contains('active')) {
-            // If Experience active, move collapsible right
-            swipeExperienceCollapsible('next');
-          } else {
-            // Show Experience
-            showExperience();
-          }
-          break;
-      }
-    }
-
-    /* Swipe Experience collapsibles left or right */
+    /* Swipe Experience collapsibles up/down (next/prev) */
     function swipeExperienceCollapsible(direction) {
       if (collapsibles.length === 0) return;
 
@@ -506,16 +467,27 @@
       }
     }
 
-    /* Attach event listeners for swipe and keyboard */
-    document.addEventListener('touchstart', handleTouchStart, { passive: true });
-    document.addEventListener('touchmove', handleTouchMove, { passive: true });
-    document.addEventListener('keydown', handleKeyDown);
-
-    /* Initialize aria attributes */
-    updateAria();
-
-    /* On page load, ensure first collapsible is collapsed */
-    collapseAllExperience();
-  </script>
-</body>
-</html>
+    /* Keyboard navigation for main sections */
+    function handleKeyDown(evt) {
+      switch (evt.key) {
+        case 'ArrowUp':
+          // ArrowUp: move to previous collapsible or show Professional Summary
+          if (content2.classList.contains('active')) {
+            swipeExperienceCollapsible('prev');
+          } else {
+            showProfessionalSummary();
+          }
+          break;
+        case 'ArrowDown':
+          // ArrowDown: move to next collapsible or show Experience
+          if (content2.classList.contains('active')) {
+            swipeExperienceCollapsible('next');
+          } else {
+            showExperience();
+          }
+          break;
+        case 'ArrowLeft':
+          // Optionally: Left/Right can also control if you want, but currently not used
+          break;
+        case 'ArrowRight':
+          break;
