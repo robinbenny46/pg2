@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Summary & Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cambria:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Cambria, serif; background: #f9f9f9; color: #333; }
+    .header-box {
+      background: #808080;
+      color: #fff;
+      padding: 15px 20px;
+      width: 100%;
+      margin-bottom: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .header-box h1 {
+      font-family: 'EB Garamond', serif;
+      font-weight: 800;
+      margin: 0;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+    .content {
+      padding: 0 20px 20px;
+    }
+    .summary {
+      margin-bottom: 40px;
+    }
+    .experience-header {
+      background: #808080;
+      color: #fff;
+      padding: 15px 20px;
+      width: 100%;
+      margin: 10px 0;
+      font-family: 'EB Garamond', serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      position: relative;
+      transition: all 0.3s ease;
+      top: 0;
+      z-index: 90;
+    }
+    .experience-header.sticky {
+      position: sticky;
+      top: 60px;
+    }
+    .collapsible {
+      margin: 10px 0 30px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: #fff;
+    }
+    .collapsible .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-family: 'EB Garamond', serif;
+    }
+    .collapsible .header .title {
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+    .collapsible .header .date {
+      font-weight: 600;
+      font-style: italic;
+      font-size: 1rem;
+    }
+    .collapsible .content {
+      display: none;
+      padding: 15px;
+      background: #fff;
+    }
+    .collapsible.active .content {
+      display: block;
+    }
+    .line2 {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-family: 'EB Garamond', serif;
+    }
+    .line2 .company {
+      font-weight: 600;
+      font-style: normal;
+    }
+    .line2 .location {
+      font-weight: 500;
+      font-style: normal;
+    }
+    .line3 {
+      font-family: 'Cambria', serif;
+      font-style: italic;
+      margin-top: 8px;
+    }
+    .bullet-list {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+    .bullet-list li {
+      list-style-type: square;
+      margin-bottom: 8px;
+      position: relative;
+      font-family: 'Cambria', serif;
+      font-weight: 400;
+    }
+    .bullet-list li::before {
+      content: "■";
+      color: #808080;
+      position: absolute;
+      left: -20px;
+      animation: rotateBullet 2s infinite;
+    }
+    @keyframes rotateBullet {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .sticky-transition {
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-box">
+    <h1>Professional Summary</h1>
+  </div>
+  <div class="content summary">
+    <p>Experienced digital marketer and web developer with a strong background in designing and developing responsive web pages. Adept at understanding client requirements and delivering tailored solutions that meet exact specifications.</p>
+  </div>
+  <div class="experience-header sticky-transition" id="experienceHeader">Experience</div>
+  <div class="collapsible" onclick="toggleCollapsible(this)">
+    <div class="header">
+      <span class="title">Regional Business Manager</span>
+      <span class="date">October 2023 - November 2024</span>
+    </div>
+    <div class="content">
+      <div class="line2">
+        <span class="company">Beth Lifestyle Pvt Ltd</span>
+        <span class="location">Kerala & Tamil Nadu</span>
+      </div>
+      <div class="line3">about the company</div>
+      <ul class="bullet-list">
+        <li>Managed regional sales and marketing operations.</li>
+        <li>Led a team of sales executives across two states.</li>
+        <li>Developed strategic partnerships with key stakeholders.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="collapsible" onclick="toggleCollapsible(this)">
+    <div class="header">
+      <span class="title">Operations Manager</span>
+      <span class="date">December 2020 - August 2021</span>
+    </div>
+    <div class="content">
+      <div class="line2">
+        <span class="company">Sahara - Kerala</span>
+        <span class="location">Kerala</span>
+      </div>
+      <div class="line3">about the company</div>
+      <ul class="bullet-list">
+        <li>Oversaw daily operations and logistics.</li>
+        <li>Implemented process improvements for efficiency.</li>
+        <li>Coordinated with multiple departments for smooth workflow.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="collapsible" onclick="toggleCollapsible(this)">
+    <div class="header">
+      <span class="title">Senior Engineer / Business Development - International Business</span>
+      <span class="date">November 2013 - December 2020</span>
+    </div>
+    <div class="content">
+      <div class="line2">
+        <span class="company">CADD Centre Training Services Pvt Ltd</span>
+        <span class="location">Global (Headquartered in Chennai)</span>
+      </div>
+      <div class="line3">about the company</div>
+      <ul class="bullet-list">
+        <li>Led international business development initiatives.</li>
+        <li>Provided technical training and support.</li>
+        <li>Developed new training modules and courses.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="collapsible" onclick="toggleCollapsible(this)">
+    <div class="header">
+      <span class="title">Technical Trainer & Course Developer</span>
+      <span class="date">October 2012 - October 2013</span>
+    </div>
+    <div class="content">
+      <div class="line2">
+        <span class="company">XCAD</span>
+        <span class="location">Odisha</span>
+      </div>
+      <div class="line3">about the company</div>
+      <ul class="bullet-list">
+        <li>Delivered technical training sessions.</li>
+        <li>Developed and updated course materials.</li>
+        <li>Assisted in curriculum development.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="collapsible" onclick="toggleCollapsible(this)">
+    <div class="header">
+      <span class="title">Graduate Engineer Trainee</span>
+      <span class="date">July 2011 - June 2012</span>
+    </div>
+    <div class="content">
+      <div class="line2">
+        <span class="company">Alicon Castalloys Pvt Ltd</span>
+        <span class="location">Pune</span>
+      </div>
+      <div class="line3">about the company</div>
+      <ul class="bullet-list">
+        <li>Assisted in engineering projects and process improvements.</li>
+        <li>Gained hands-on experience in manufacturing processes.</li>
+        <li>Participated in training and development programs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function toggleCollapsible(element) {
+      // Close all collapsibles
+      document.querySelectorAll('.collapsible').forEach(el => {
+        if (el !== element) {
+          el.classList.remove('active');
+        }
+      });
+      // Toggle current
+      element.classList.toggle('active');
+    }
+
+    // Sticky header effect for Experience
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('experienceHeader');
+      const rect = header.getBoundingClientRect();
+      if (rect.top <= 60) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+  </script>
+</body>
+</html>
